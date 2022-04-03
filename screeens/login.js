@@ -1,10 +1,31 @@
 import { View, StyleSheet } from 'react-native'
 import React , {useState} from 'react'
 import { Input , Button} from 'react-native-elements';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { authentication } from '../firebase';
 
 const login = ({ navigation }) => {
+  const [isSignedin,setSignedIn] = useState(false);
     const [email,setEmail] = useState('')
     const [password,setpassword] = useState('')
+
+    const signin =()=>{
+      signInWithEmailAndPassword(authentication,email,password)
+      .then((re)=>{
+        setSignedIn(true);
+        navigation.navigate('Chat')
+      })
+      .catch((re)=>{
+        console.log(re);
+      })
+
+    }
+    const verified =()=>{
+      if(isSignedin === true){
+        navigation.navigate('chatScreen');
+      }
+    }
+
   return (
     <View style={styles.container}>
       <Input
@@ -26,7 +47,7 @@ const login = ({ navigation }) => {
 
 
       />
-      <Button title="Sign in" style={styles.button}/>
+      <Button title="Sign in" style={styles.button} onPress={signin} />
       <Button title="Register" style={styles.button} onPress={()=>navigation.navigate('Register')}/>
 
       

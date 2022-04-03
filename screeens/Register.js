@@ -1,13 +1,33 @@
 import { View, StyleSheet } from 'react-native'
 import React , {useState} from 'react'
 import { Input , Button} from 'react-native-elements';
+//import { auth } from '../firebase';
+import { authentication } from '../firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { NavigationContainer } from '@react-navigation/native';
 
-const Register = () => {
+const Register = ({navigation}) => {
+    //try signed in usestate
+    const [isSignedin,setSignedIn] = useState(false);
+
     const [email,setEmail] = useState('')
     const [name,setName] = useState('')
     const [pid,setPId] = useState('')
     const [password,setPassword] = useState('')
     const [image,setImg] = useState('')
+    const signup =()=>{
+        createUserWithEmailAndPassword(authentication,email,password)
+        .then((re)=>{
+            console.log(re);
+            setSignedIn(true);
+            navigation.navigate('Chat');
+        })
+        .catch((re)=>{
+            console.log(re);
+        })
+
+    }
+   
   return (
     <View style={styles.container}>
       <Input
@@ -57,7 +77,7 @@ const Register = () => {
 
       />
       
-      <Button title="Register" style={styles.button}/>
+      <Button title="Register"  style={styles.button} onPress={signup} />
 
       
     </View>
