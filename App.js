@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import login from "./screeens/login";
 import Register from "./screeens/Register";
 import chatScreen from "./screeens/chatScreen";
+//import 'react-native-gesture-handler';
 
 const stack = createStackNavigator();
 

@@ -11,12 +11,15 @@ const login = ({ navigation }) => {
 
     const signin =()=>{
       signInWithEmailAndPassword(authentication,email,password)
-      .then((re)=>{
+      .then((userCredential)=>{
         setSignedIn(true);
+        const user = userCredential.user;
         navigation.navigate('Chat')
       })
-      .catch((re)=>{
-        console.log(re);
+      .catch((error)=>{
+        const errorMessage = error.message;
+        alert(errorMessage);
+        //console.log(re);
       })
 
     }

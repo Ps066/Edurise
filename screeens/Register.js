@@ -17,13 +17,14 @@ const Register = ({navigation}) => {
     const [image,setImg] = useState('')
     const signup =()=>{
         createUserWithEmailAndPassword(authentication,email,password)
-        .then((re)=>{
-            console.log(re);
+        .then((userCredential)=>{
+            const user = userCredential.user;
             setSignedIn(true);
             navigation.navigate('Chat');
         })
-        .catch((re)=>{
-            console.log(re);
+        .catch((error)=>{
+            const errorMessage = error.message;
+            alert(errorMessage);
         })
 
     }
