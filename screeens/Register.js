@@ -20,7 +20,7 @@ const Register = ({navigation}) => {
         .then((userCredential)=>{
             const user = userCredential.user;
             setSignedIn(true);
-            navigation.navigate('Chat');
+            navigation.navigate('Main');
         })
         .catch((error)=>{
             const errorMessage = error.message;

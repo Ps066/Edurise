@@ -1,20 +1,39 @@
 import { View, StyleSheet } from 'react-native'
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 import { Input , Button} from 'react-native-elements';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { authentication } from '../firebase';
+import {  onAuthStateChanged } from "firebase/auth";
 
 const login = ({ navigation }) => {
   const [isSignedin,setSignedIn] = useState(false);
     const [email,setEmail] = useState('')
     const [password,setpassword] = useState('')
+    //useEffect(()=>{
+      //effect 
+      //const unsubscribe = onAuthStateChanged(authentication, (user) => {
+        //if (user) {
+          // User is signed in, see docs for a list of available properties
+          // https://firebase.google.com/docs/reference/js/firebase.User
+          //navigation.replace('Main');
+          //const uid = user.uid;
+          // ...
+       // } else {
+          // User is signed out
+          // ...
+        //}
+      //});
+
+      //return unsubscribe
+      
+    //})
 
     const signin =()=>{
       signInWithEmailAndPassword(authentication,email,password)
       .then((userCredential)=>{
         setSignedIn(true);
         const user = userCredential.user;
-        navigation.navigate('Chat')
+        navigation.navigate('Main')
       })
       .catch((error)=>{
         const errorMessage = error.message;
@@ -23,11 +42,11 @@ const login = ({ navigation }) => {
       })
 
     }
-    const verified =()=>{
-      if(isSignedin === true){
-        navigation.navigate('chatScreen');
-      }
-    }
+    //const verified =()=>{
+      //if(isSignedin === true){
+        //navigation.navigate('chatScreen');
+     // }
+    //}
 
   return (
     <View style={styles.container}>
