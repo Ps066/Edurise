@@ -33,7 +33,7 @@ const login = ({ navigation }) => {
           navigation.replace('Main');
 
         }else{
-          // ydtg
+          navigation.canGoBack()&&navigation.popToTop();
 
         }
       });

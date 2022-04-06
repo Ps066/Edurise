@@ -36,6 +36,7 @@ const Register = ({navigation}) => {
             const errorMessage = error.message;
             alert(errorMessage);
         })
+        navigation.popToTop();
 
     }
    
