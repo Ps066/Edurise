@@ -27,17 +27,33 @@ const login = ({ navigation }) => {
       //return unsubscribe
       
     //})
+    useEffect(() => { 
+      const unsubscribe = onAuthStateChanged(authentication ,function(user){
+        if(user){
+          navigation.replace('Main');
+
+        }else{
+          // ydtg
+
+        }
+      });
+    
+      return unsubscribe
+      
+    }, [])
+    
 
     const signin =()=>{
       signInWithEmailAndPassword(authentication,email,password)
       .then((userCredential)=>{
         setSignedIn(true);
         const user = userCredential.user;
-        navigation.navigate('Main')
+        //navigation.navigate('Main')
       })
       .catch((error)=>{
         const errorMessage = error.message;
         alert(errorMessage);
+        //navigation.canGoBack()&& navigation.popToTop();
         //console.log(re);
       })
 
@@ -81,8 +97,10 @@ const login = ({ navigation }) => {
 export default login
 const styles =StyleSheet.create({
     button:{
-        width:300,
-        marginTop:10
+        width:400,
+        marginTop:40,
+        borderRadius:2,
+        backgroundColor:'black'
     },
     container:{
         flex:1,

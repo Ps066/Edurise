@@ -12,12 +12,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <stack.Navigator>
+      
       <stack.Screen name="Login" component={login}/>
-      <stack.Screen name="Main" component={MainScreen}/>
+     
       
       <stack.Screen name="Register" component={Register}/>
       
-      
+      <stack.Screen name="Main" component={MainScreen}/>
         
         
         

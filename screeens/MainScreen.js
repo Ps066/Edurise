@@ -4,17 +4,34 @@ import {signOut } from "firebase/auth";
 import { authentication } from '../firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+//import { Avatar } from 'react-native-elements';
+//import { authentication } from '../firebase';
 
 const Mainscreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
+     // headerLeft:()=>(
+        
+         // <Avatar
+           // rounded
+            //source={{
+             // uri:authentication?.currentUser?
+             // .image
+            //}}
+         // />
+        
+
+     // ),
       headerRight:()=>(
+        
+        
         <TouchableOpacity styles={{
           marginRight: 30
         }} onPress={signout}>
         
         <MaterialCommunityIcons name="logout" size={24} color="black" />
         </TouchableOpacity>
+        
       )
     })
   
