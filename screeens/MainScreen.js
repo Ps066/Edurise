@@ -4,24 +4,23 @@ import {signOut } from "firebase/auth";
 import { authentication } from '../firebase';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-//import { Avatar } from 'react-native-elements';
+import { Avatar } from 'react-native-elements';
 //import { authentication } from '../firebase';
 
 const Mainscreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
-     // headerLeft:()=>(
-        
-         // <Avatar
-           // rounded
-            //source={{
-             // uri:authentication?.currentUser?
-             // .image
-            //}}
-         // />
-        
+     headerLeft:()=>(
+        <View>
+         <Avatar
+           rounded
+            source={{
+              uri:authentication?.currentUser?.photoURL
+            }}
+         />
+         </View>
 
-     // ),
+     ),
       headerRight:()=>(
         
         

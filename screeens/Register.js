@@ -3,8 +3,9 @@ import React , {useState} from 'react'
 import { Input , Button} from 'react-native-elements';
 //import { auth } from '../firebase';
 import { authentication } from '../firebase';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword ,updateProfile } from "firebase/auth";
 import { NavigationContainer } from '@react-navigation/native';
+
 
 const Register = ({navigation}) => {
     //try signed in usestate
@@ -21,6 +22,15 @@ const Register = ({navigation}) => {
             const user = userCredential.user;
             setSignedIn(true);
             navigation.replace('Main');
+            updateProfile(authentication.currentUser, {
+                displayName: name, photoURL: image? image:"https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
+              }).then(() => {
+                // Profile updated!
+                // ...
+              }).catch((error) => {
+                // An error occurred
+                // ...
+              });
         })
         .catch((error)=>{
             const errorMessage = error.message;
