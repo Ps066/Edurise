@@ -6,6 +6,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Avatar } from 'react-native-elements';
 import { GiftedChat } from 'react-native-gifted-chat'
+import { db } from '../firebase';
+import { collection, addDoc } from "firebase/firestore"; 
+
+
 //import { authentication } from '../firebase';
 
 const Mainscreen = ({navigation}) => {
@@ -65,13 +69,34 @@ const Mainscreen = ({navigation}) => {
 
   const onSend = useCallback((messages = []) => {
     setMessages(previousMessages => GiftedChat.append(previousMessages, messages))
+    const {
+      _id,
+      createdAt,
+      text,
+      user
+    }= messages[0]
+   // try {
+     // const docRef = await addDoc(collection(db, "chats"), {
+       // _id,
+       // createdAt,
+        //text,
+        //user
+     // });
+     // console.log("Document written with ID: ", docRef.id);
+   // } catch (e) {
+      //console.error("Error adding document: ", e);
+   // }
+    
   }, [])
   return (
     <GiftedChat
       messages={messages}
+      showAvatarForEveryMessage={true}
       onSend={messages => onSend(messages)}
       user={{
-        _id: 1,
+        _id: authentication?.currentUser?.email,
+        name:authentication?.currentUser?.displayName,
+        avatar: authentication?.currentUser?.photoURL
       }}
     />
   )

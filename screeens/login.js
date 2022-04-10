@@ -85,8 +85,10 @@ const login = ({ navigation }) => {
 
 
       />
-      <Button title="Sign in" style={styles.button} onPress={signin} />
-      <Button title="Register" style={styles.button} onPress={()=>navigation.navigate('Register')}/>
+      <View style={styles.button} >
+      <View style={styles.btnel}><Button title="Sign in"   onPress={signin} /></View>
+      <View style={styles.btnel}><Button title="Register"   onPress={()=>navigation.navigate('Register')}/></View>
+      </View>
 
       
     </View>
@@ -99,12 +101,21 @@ const styles =StyleSheet.create({
     button:{
         width:400,
         marginTop:40,
-        borderRadius:2,
-        backgroundColor:'black'
+        padding:40,
+        //borderRadius:2,
+        //backgroundColor: '#00ffcc'
+    },
+    btnel:{
+      marginTop:10,
+      //padding:20, 
+      borderRadius:20
+
+
     },
     container:{
         flex:1,
         alignItems:'center',
-        padding:10 
+        padding:10,
+        
     }
 })
