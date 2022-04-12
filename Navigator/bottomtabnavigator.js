@@ -29,7 +29,7 @@ const Bottomtabnavigator = ({navigation}) => {
             options={{
             tabBarLabel:"Connect",
             tabBarIcon: ({ color, size })=>(
-                <Icon name={Platform.OS === 'ios' ? "ios-Message" : "md-connect"} color={color} size={size}/>
+                <Icon name={Platform.OS === 'ios' ? "chatbubbles" : "chatbubbles"} color={color} size={size}/>
             )
         }}
         />
@@ -37,7 +37,7 @@ const Bottomtabnavigator = ({navigation}) => {
             options={{
             tabBarLabel:"MIS",
             tabBarIcon: ({ color, size })=>(
-                <Icon name={Platform.OS === 'ios' ? "ios-information-circle" : "md-about"} color={color} size={size}/>
+                <Icon name={Platform.OS === 'ios' ? "business" : "business"} color={color} size={size}/>
             )
         }}
         />
