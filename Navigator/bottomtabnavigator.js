@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-const Tab = createBottomTabNavigator();
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import 'react-native-gesture-handler';
 import Home from '../screeens/Home';
 import Mainscreen from '../screeens/MainScreen';
@@ -11,12 +11,26 @@ import { Platform } from 'react-native';
 
 import { Stacknavi } from './Stacknavi';
 
+
+
+const Tab = createBottomTabNavigator();
+
 const Bottomtabnavigator = ({navigation}) => {
   return (
     <Tab.Navigator
         initialRouteName='Home'
         tabBarOptions={{
-            activeTintColor: '#00ffcc'
+            activeTintColor: '#09aa81'
+        }}
+        options={{
+            headerStyle:{
+            backgroundColor: '#009387',
+
+            },
+            headerTintColor: '#ffffff',
+            headerTitleStyle:{
+            fontWeight: '900'
+        }
         }}
     >
         <Tab.Screen name="Home" component={Home} options={{

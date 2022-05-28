@@ -4,6 +4,7 @@ import { Input , Button} from 'react-native-elements';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { authentication } from '../firebase';
 import {  onAuthStateChanged } from "firebase/auth";
+import { Btn } from '../styles/login_style';
 
 const login = ({ navigation }) => {
   const [isSignedin,setSignedIn] = useState(false);
@@ -86,7 +87,7 @@ const login = ({ navigation }) => {
 
       />
       <View style={styles.button} >
-      <View style={styles.btnel}><Button title="Sign in"   onPress={signin} /></View>
+      <View style={styles.btnel}><Btn title="Sign in"   onPress={signin} /></View>
       <View style={styles.btnel}><Button title="Register"   onPress={()=>navigation.navigate('Register')}/></View>
       </View>
 

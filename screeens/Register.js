@@ -5,6 +5,7 @@ import { Input , Button} from 'react-native-elements';
 import { authentication } from '../firebase';
 import { createUserWithEmailAndPassword ,updateProfile } from "firebase/auth";
 import { NavigationContainer } from '@react-navigation/native';
+import { user } from '../firebase'; 
 
 
 const Register = ({navigation}) => {
@@ -39,6 +40,8 @@ const Register = ({navigation}) => {
         navigation.popToTop();
 
     }
+
+  
    
   return (
     <View style={styles.container}>

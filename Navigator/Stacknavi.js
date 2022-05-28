@@ -17,7 +17,16 @@ const Stacknavi = () => {
     
     <stack.Navigator>
     
-    <stack.Screen name="Login" component={login}/>
+    <stack.Screen name="Login" component={login} options={{
+      headerStyle:{
+        backgroundColor: '#009387',
+
+      },
+      headerTintColor: '#ffffff',
+      headerTitleStyle:{
+        fontWeight: '900'
+      }
+    }} />
    
     
     <stack.Screen name="Register" component={Register}/>
